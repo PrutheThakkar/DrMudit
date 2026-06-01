@@ -13,6 +13,12 @@ import regenImg from "../app/images/Regenerative Treatment.jpg";
 import painImg from "../app/images/Pain Management.jpg";
 import logoBannerImg from "../app/images/logo-banner-new.png";
 
+import patientStory1Img from "../app/images/Patient Stories_1_Louise W.webp";
+import patientStory2Img from "../app/images/Patient Stories_2_Ronak Khemka.webp";
+import patientStory3Img from "../app/images/Patient Stories_3_Jeff Rouse.webp";
+import patientStory4Img from "../app/images/Patient Stories_4_Manish Anand.webp";
+
+
 const imageSrc = (img) => (typeof img === "string" ? img : img.src);
 
 const imgAttrs = (img, priority = false) => {
@@ -184,7 +190,7 @@ const pageMarkup = `
           <div class="testimonial-image">
             <img 
               alt="Patient with medical team" 
-              ${externalImgAttrs("../images/Patient Stories_1_Louise W.webp", false)}
+              ${imgAttrs(patientStory1Img, false)}
             />
           </div>
 
@@ -200,7 +206,7 @@ const pageMarkup = `
             </div>
 
             <div class="patient-info">
-              - Bilateral knee replacement, Mumbai
+              - Louise W
             </div>
           </div>
         </div>
@@ -209,7 +215,7 @@ const pageMarkup = `
           <div class="testimonial-image">
             <img 
               alt="Happy patient" 
-              ${externalImgAttrs("../images/Patient Stories_2_Ronak Khemka.webp", false)}
+              ${imgAttrs(patientStory2Img, false)}
             />
           </div>
 
@@ -221,11 +227,11 @@ const pageMarkup = `
             </div>
 
             <div class="quote-text">
-              "Dr. Khanna's expertise and care made my recovery smooth. I'm back to my daily activities pain-free."
+              "I came from Myanmar relating bilateral knee replacement surgery of my mother with Dr.Mudit Khanna. The Doctor explained us well about the surgery, he has alot of patience and kindness.He has Gifted hands, the surgery went perfect for both knees. Dr.Mudit Khanna and his team,Dr.Ramiz and Ms.Bhakti continued caring my mother so much that she was able to walk on the same day of surgery and recovering at her best.He is very very reliable and trustworthy, from the first meet of OPD day to discharge and follow-up, he took care of my mom with full responsibility. As the Doctor promised, we had no worries about the surgery and recovery.He made my mother walk again and stand on her knees independently. We are so grateful for your exceptional care.May your days be healthy like you make it for others."
             </div>
 
             <div class="patient-info">
-              - Hip replacement, Mumbai
+              - Ronak Khemka
             </div>
           </div>
         </div>
@@ -234,7 +240,7 @@ const pageMarkup = `
           <div class="testimonial-image">
             <img 
               alt="Medical consultation" 
-              ${externalImgAttrs("../images/Patient Stories_3_Jeff Rouse.webp", false)}
+              ${imgAttrs(patientStory3Img, false)}
             />
           </div>
 
@@ -246,11 +252,11 @@ const pageMarkup = `
             </div>
 
             <div class="quote-text">
-              "The entire team was professional and caring. The surgery was successful and my recovery exceeded expectations."
+              "First thing I would like to say is that if you are considering any type of orthopaedic surgery then Dr Mudit Khanna is your man. I have just spent the last 2 1/2 weeks at Wockhardt Hospital having my knee replaced by Dr Khanna and his wonderful team. From the very first meeting with Dr Khanna you are made to feel at ease with your about to go through. The before and after care could not be any better and Dr Khanna’s calm and positive attitude makes it much easier. I would have no hesitation to recommend him and his team as the whole experience has been 1st class and hugely cost effective. Thank you again Dr Khanna!"
             </div>
 
             <div class="patient-info">
-              - Knee surgery, Mumbai
+              - Jeff Rouse
             </div>
           </div>
         </div>
@@ -259,7 +265,7 @@ const pageMarkup = `
           <div class="testimonial-image">
             <img 
               alt="Patient recovery" 
-              ${externalImgAttrs("../images/Patient Stories_4_Manish Anand.webp", false)}
+              ${imgAttrs(patientStory4Img, false)}
             />
           </div>
 
@@ -271,39 +277,24 @@ const pageMarkup = `
             </div>
 
             <div class="quote-text">
-              "I was nervous about the surgery, but Dr. Khanna explained everything clearly. Now I'm living without pain."
+              "My father underwent a robotic partial knee replacement surgery performed by Dr. Khanna.
+
+Surgery – The operation went very well, and my father was able to walk properly within a few days without needing a walker. Partial knee surgery is considered quite tricky, but the doctor performed it with perfection.
+
+Professional Behaviour – Dr. Khanna and his team were very professional from the beginning. They patiently addressed all our concerns, were always available for questions, and provided clear and helpful responses.
+
+Post-Surgery Care – The doctor and his team continued to support us after the surgery, which kept us motivated. My father felt very positive throughout his recovery.
+
+Recommendation – I would highly recommend Dr. Khanna to anyone considering orthopaedic surgery. You will truly be in good hands."
             </div>
 
             <div class="patient-info">
-              - Joint replacement, Mumbai
+              - Manish Anand
             </div>
           </div>
         </div>
 
-        <div class="swiper-slide">
-          <div class="testimonial-image">
-            <img 
-              alt="Successful surgery" 
-              ${externalImgAttrs("https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=600&fit=crop", false)}
-            />
-          </div>
-
-          <div class="testimonial-content">
-            <div class="nav-lines">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="quote-text">
-              "Outstanding care from consultation to recovery. Dr. Khanna is truly skilled and compassionate."
-            </div>
-
-            <div class="patient-info">
-              - Orthopedic surgery, Mumbai
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
 
@@ -415,6 +406,7 @@ export default function HomeClient() {
     let mainExperienceStarted = false;
     let heroTl;
     let preloaderTl;
+    let preloaderFallbackTimer;
     let typingTimer;
     let expertiseSwiper;
     let patientSwiper;
@@ -518,6 +510,16 @@ export default function HomeClient() {
           startMainExperience();
         },
       });
+
+      preloaderFallbackTimer = window.setTimeout(() => {
+        if (!mainExperienceStarted) {
+          preloaderTl?.kill();
+          if (preloader) {
+            gsap.set(preloader, { display: "none", autoAlpha: 0 });
+          }
+          startMainExperience();
+        }
+      }, 4200);
 
       preloaderTl
         .to(".preloader-title", {
@@ -1024,22 +1026,34 @@ export default function HomeClient() {
       });
 
       if (label) {
-        sectionTl.from(label, {
-          y: 25,
-          autoAlpha: 0,
-          duration: 0.7,
-          ease: easeMain,
-          clearProps: "visibility",
-        });
+        sectionTl.fromTo(
+          label,
+          {
+            y: 25,
+            autoAlpha: 0,
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.7,
+            ease: easeMain,
+            clearProps: "visibility",
+          }
+        );
       }
 
       if (heading) {
-        sectionTl.from(
+        sectionTl.fromTo(
           heading,
           {
             y: 45,
             autoAlpha: 0,
             filter: "blur(8px)",
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
+            filter: "blur(0px)",
             duration: 0.9,
             ease: easeMain,
             clearProps: "visibility",
@@ -1049,11 +1063,15 @@ export default function HomeClient() {
       }
 
       if (subHeading) {
-        sectionTl.from(
+        sectionTl.fromTo(
           subHeading,
           {
             y: 28,
             autoAlpha: 0,
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
             duration: 0.7,
             ease: easeMain,
             clearProps: "visibility",
@@ -1072,21 +1090,35 @@ export default function HomeClient() {
           invalidateOnRefresh: true,
         },
       })
-      .from(".about-section .left p", {
-        y: 40,
-        autoAlpha: 0,
-        filter: "blur(8px)",
-        duration: 1,
-        ease: easeMain,
-        clearProps: "visibility",
-      })
-      .from(
+      .fromTo(
+        ".about-section .left p",
+        {
+          y: 40,
+          autoAlpha: 0,
+          filter: "blur(8px)",
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: easeMain,
+          clearProps: "visibility",
+        }
+      )
+      .fromTo(
         ".about-section .img-wrap",
         {
           y: 70,
           autoAlpha: 0,
           scale: 0.92,
           filter: "blur(10px)",
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          scale: 1,
+          filter: "blur(0px)",
           duration: 1.1,
           ease: "power4.out",
           clearProps: "visibility",
@@ -1110,20 +1142,33 @@ export default function HomeClient() {
           invalidateOnRefresh: true,
         },
       })
-      .from(".expertise-tabs", {
-        y: 35,
-        autoAlpha: 0,
-        duration: 0.8,
-        ease: easeMain,
-        clearProps: "visibility",
-      })
-      .from(
+      .fromTo(
+        ".expertise-tabs",
+        {
+          y: 35,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: easeMain,
+          clearProps: "visibility",
+        }
+      )
+      .fromTo(
         ".expertise-card",
         {
           y: 70,
           autoAlpha: 0,
           scale: 0.92,
           filter: "blur(10px)",
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          scale: 1,
+          filter: "blur(0px)",
           stagger: 0.18,
           duration: 1,
           ease: "power4.out",
@@ -1131,11 +1176,15 @@ export default function HomeClient() {
         },
         "-=0.35"
       )
-      .from(
+      .fromTo(
         ".expertise-section .hero-buttons",
         {
           y: 25,
           autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
           duration: 0.7,
           ease: easeMain,
           clearProps: "visibility",
@@ -1182,19 +1231,31 @@ export default function HomeClient() {
           invalidateOnRefresh: true,
         },
       })
-      .from(".faq-left", {
-        x: -60,
-        autoAlpha: 0,
-        filter: "blur(8px)",
-        duration: 1,
-        ease: easeMain,
-        clearProps: "visibility",
-      })
-      .from(
+      .fromTo(
+        ".faq-left",
+        {
+          x: -60,
+          autoAlpha: 0,
+          filter: "blur(8px)",
+        },
+        {
+          x: 0,
+          autoAlpha: 1,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: easeMain,
+          clearProps: "visibility",
+        }
+      )
+      .fromTo(
         ".faq-item",
         {
-          Y: 60,
+          y: 60,
           autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
           stagger: 0.12,
           duration: 0.8,
           ease: easeMain,
@@ -1243,12 +1304,11 @@ export default function HomeClient() {
           "-=0.75"
         )
         .from(
-          ".footer-nav li",
+          ".menu-footer",
           {
-            y: 20,
+            x: -20,
             autoAlpha: 0,
-            stagger: 0.05,
-            duration: 0.55,
+            duration: 0.75,
             ease: easeMain,
             clearProps: "visibility",
           },
@@ -1339,7 +1399,7 @@ export default function HomeClient() {
         if (img.decode) {
           img
             .decode()
-            .catch(() => {})
+            .catch(() => { })
             .finally(() => {
               safeRefresh();
             });
@@ -1361,7 +1421,7 @@ export default function HomeClient() {
 
         imageLoadHandlers.push({
           img,
-          onImageLoad: refreshAfterImage,
+                    y: 60,
         });
       }
     });
@@ -1387,6 +1447,7 @@ export default function HomeClient() {
       heroTl?.kill();
 
       window.clearTimeout(typingTimer);
+      window.clearTimeout(preloaderFallbackTimer);
       window.clearTimeout(refreshTimer1);
       window.clearTimeout(refreshTimer2);
       window.clearTimeout(refreshTimer3);
