@@ -1,0 +1,18 @@
+    
+
+
+    .inside-hero{
+        h1{
+            text-align: center;
+            span.sub{
+            display: inline-block;
+            font-weight: 600;
+            margin-left: 6px;
+            background: #14366D;
+            background: linear-gradient(90deg,rgba(20, 54, 109, 1) 0%, rgba(179, 179, 179, 1) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            }
+        }
+    }

@@ -1,0 +1,378 @@
+.expertise-hero .expertise-hero-image {
+  height: 652px;
+}
+
+.expertise-detail-page {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.expertise-hero {
+  padding: 130px 0 70px;
+  background: radial-gradient(circle at 50% 25%, rgba(0, 98, 190, 0.2), transparent 36%), #000;
+}
+.expertise-hero .expertise-hero-top {
+  display: grid;
+  grid-template-columns: 1fr 0.65fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 38px;
+}
+.expertise-hero h1 {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.12;
+  color: #fff;
+}
+.expertise-hero h1 span {
+  color: #1d5ca8;
+}
+.expertise-hero .expertise-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/6.2;
+  overflow: hidden;
+  background: #06101d;
+}
+.expertise-hero .expertise-hero-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.expertise-content-section {
+  position: relative;
+  padding: 50px 0 110px;
+  background: #000;
+}
+.expertise-content-section .expertise-tabs {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 45px;
+}
+.expertise-content-section .expertise-tabs ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.expertise-content-section .expertise-tabs ul::-webkit-scrollbar {
+  display: none;
+}
+.expertise-content-section .expertise-tabs li {
+  flex: 0 0 auto;
+}
+.expertise-content-section .expertise-tabs button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: color 0.35s ease, background 0.35s ease, transform 0.35s ease;
+}
+.expertise-content-section .expertise-tabs button:hover {
+  color: #fff;
+  background: rgba(0, 108, 255, 0.18);
+}
+.expertise-content-section .expertise-tabs button.active {
+  color: #fff;
+  background: linear-gradient(135deg, #006cff, #004aa8);
+}
+.expertise-content-section .expertise-slider-wrap {
+  position: relative;
+}
+.expertise-content-section .expertise-swiper {
+  width: 100%;
+}
+.expertise-content-section .expertise-info-block {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.expertise-content-section .expertise-info-block h2 {
+  margin: 0 0 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1d5ca8;
+}
+.expertise-content-section .expertise-info-block .expertise-info-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  aspect-ratio: 1/0.78;
+  margin: 0 auto 34px;
+  overflow: hidden;
+}
+.expertise-content-section .expertise-info-block .expertise-info-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.expertise-content-section .expertise-info-block p {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+}
+.expertise-content-section .expertise-slider-next {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 34px;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.expertise-content-section .expertise-slider-next:hover {
+  color: #1d5ca8;
+  transform: translateY(-50%) translateX(5px);
+}
+
+@media (max-width: 991px) {
+  .expertise-hero {
+    padding: 110px 0 60px;
+  }
+  .expertise-hero .expertise-hero-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .expertise-hero .expertise-hero-image {
+    aspect-ratio: 1/0.72;
+  }
+  .expertise-content-section {
+    padding: 40px 0 80px;
+  }
+  .expertise-content-section .expertise-tabs {
+    margin-bottom: 35px;
+  }
+  .expertise-content-section .expertise-tabs ul {
+    justify-content: flex-start;
+    padding: 0 16px 4px;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .expertise-content-section .expertise-tabs button {
+    min-height: 42px;
+    padding: 10px 16px;
+  }
+  .expertise-content-section .expertise-info-block h3 {
+    margin-bottom: 22px;
+  }
+  .expertise-content-section .expertise-info-block .expertise-info-image {
+    width: min(100%, 520px);
+  }
+  .expertise-content-section .expertise-slider-next {
+    right: 0;
+    top: 42%;
+    font-size: 30px;
+  }
+}
+@media (max-width: 575px) {
+  .expertise-content-section .expertise-info-block .expertise-info-image {
+    aspect-ratio: 1/0.9;
+  }
+  .expertise-content-section .expertise-info-block p {
+    text-align: center;
+  }
+  .expertise-content-section .expertise-slider-next {
+    right: -4px;
+  }
+}
+.expertise-content-section {
+  position: relative;
+  padding: 55px 0 110px;
+  background: #000;
+  overflow: hidden;
+}
+.expertise-content-section .expertise-tab-nav {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 42px;
+}
+.expertise-content-section .expertise-tab-nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+.expertise-content-section .expertise-tab-nav ul::-webkit-scrollbar {
+  display: none;
+}
+.expertise-content-section .expertise-tab-nav li {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #004aa8;
+  border-radius: 10px;
+}
+.expertise-content-section .expertise-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.expertise-content-section .expertise-tab-btn:hover {
+  color: #fff;
+  background: rgba(0, 108, 255, 0.18);
+}
+.expertise-content-section .expertise-tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #006cff, #004aa8);
+}
+.expertise-content-section .expertise-slider-wrap {
+  position: relative;
+  width: 100%;
+}
+.expertise-content-section .expertise-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+.expertise-content-section .swiper-slide {
+  width: 100%;
+}
+.expertise-content-section .expertise-info-block {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.expertise-content-section .expertise-info-block h3 {
+  margin: 0 0 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+}
+.expertise-content-section .expertise-info-block .expertise-info-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  aspect-ratio: 1/0.78;
+  margin: 0 auto 34px;
+  overflow: hidden;
+}
+.expertise-content-section .expertise-info-block .expertise-info-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.expertise-content-section .expertise-info-block p {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+}
+.expertise-content-section .expertise-slider-next {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 34px;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.expertise-content-section .expertise-slider-next:hover {
+  color: #1d5ca8;
+  transform: translateY(-50%) translateX(5px);
+}
+
+@media (max-width: 991px) {
+  .expertise-content-section {
+    padding: 42px 0 80px;
+  }
+  .expertise-content-section .expertise-tab-nav {
+    margin-bottom: 34px;
+  }
+  .expertise-content-section .expertise-tab-nav ul {
+    justify-content: flex-start;
+    gap: 10px;
+    padding-bottom: 5px;
+  }
+  .expertise-content-section .expertise-tab-btn {
+    min-height: 42px;
+    padding: 10px 16px;
+  }
+  .expertise-content-section .expertise-info-block .expertise-info-image {
+    width: 100%;
+    height: 500px;
+  }
+  .expertise-content-section .expertise-slider-next {
+    right: 0;
+    top: 42%;
+    font-size: 30px;
+  }
+}
+@media (max-width: 575px) {
+  .expertise-content-section .expertise-tab-nav ul {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .expertise-content-section .expertise-info-block .expertise-info-image {
+    aspect-ratio: 1/0.9;
+  }
+  .expertise-content-section .expertise-info-block p {
+    text-align: center;
+  }
+}
+@media (max-width: 991px) {
+  .expertise-content-section {
+    padding: 40px 0 80px;
+  }
+  .expertise-content-section .expertise-tabs {
+    margin-bottom: 35px;
+  }
+  .expertise-content-section .expertise-tabs ul {
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+  .expertise-content-section .expertise-tabs button {
+    min-height: 42px;
+    padding: 10px 16px;
+  }
+  .expertise-content-section .expertise-slider-next {
+    right: 0;
+    top: 42%;
+    font-size: 30px;
+  }
+}/*# sourceMappingURL=expertise.css.map */

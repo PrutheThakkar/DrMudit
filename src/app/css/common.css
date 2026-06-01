@@ -1,0 +1,845 @@
+/*! HTML5 Boilerplate v9.0.0-RC1 | MIT License | https://html5boilerplate.com/ */
+/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap");
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal; /* Black */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ZalandoSansExpanded-Italic-VariableFont";
+  src: url("../fonts/ZalandoSansExpanded-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal; /* Black */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ZalandoSansExpanded-VariableFont";
+  src: url("../fonts/ZalandoSansExpanded-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal; /* Black */
+  font-style: normal;
+  font-display: swap;
+}
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html {
+  color: #222;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope";
+}
+
+ul li {
+  list-style: none;
+}
+
+/* Main cursor image */
+.image-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.image-cursor img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Magnifier style */
+.magnifier {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%) scale(1);
+  box-shadow: 0 0 20px rgba(158, 1, 1, 0.1);
+  background-repeat: no-repeat;
+  background-size: 200%; /* zoom factor */
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Hide visually and from screen readers
+ */
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .visually-hidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * The use of `table` rather than `block` is only necessary if using
+ * `::before` to contain the top-margins of child elements.
+ */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+@media print, (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+ul {
+  list-style: none;
+}
+ul li a {
+  border: none;
+}
+
+/* variables.css */
+:root {
+  --color-primary: #9E0101;
+  --color-secondary: rgba(158, 1, 1, 0.75);
+  --color-third: rgba(158, 1, 1, 0.5);
+  --color-fourth: rgba(158, 1, 1, 0.25);
+  --color-text: rgba(0, 0, 0, 0.75);
+  --color-bg: #FFFFFF;
+}
+
+/* font size define leena starts */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: clamp(2.188rem, 0.1171rem + 3.2357vw, 4rem);
+  font-family: "ZalandoSansExpanded-VariableFont";
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  color: #fff;
+}
+h1 span {
+  color: #14366D;
+}
+
+h2 {
+  font-size: clamp(1.5rem, -0.1791rem + 3.0143vw, 2.75rem);
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "ZalandoSansExpanded-VariableFont";
+  color: #fff;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 0.125rem + 1.5625vw, 1.5rem);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header .subtitle {
+  display: block;
+  font-size: clamp(1.125rem, 0.6964rem + 0.6696vw, 1.5rem);
+  color: var(--color-third);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.section-header .title {
+  font-size: 42px;
+  font-weight: 600;
+  color: #9b1c1c;
+}
+
+body {
+  background: #000;
+}
+
+p {
+  font-size: clamp(0.875rem, 0.5668rem + 0.361vw, 1rem);
+  color: #fff;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* font size define leena ends */
+/* ================= HEADER ================= */
+/* ================= HEADER ================= */
+header {
+  background: #000;
+  padding: 20px 0;
+  position: relative;
+  z-index: 999;
+}
+header .container {
+  margin: 0 auto;
+  overflow: visible;
+}
+header .logo-wrapper {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .logo {
+  width: 250px;
+  height: auto;
+}
+header .logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+header {
+  /* ================= NAV ================= */
+}
+header .div {
+  position: relative;
+}
+header .div > ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+header .div > ul > li {
+  position: relative;
+}
+header .div > ul > li > a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.875rem, 0.5893rem + 0.4464vw, 1.125rem);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  transition: opacity 0.3s ease;
+}
+header .div > ul > li > a:hover {
+  opacity: 0.75;
+}
+header .div > ul > li > a svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s ease;
+}
+header .div > ul > li > a {
+  /* UNDERLINE */
+}
+header .div > ul > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+header .div > ul > li > a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+header .div > ul > li > a:not(:hover)::after {
+  transform-origin: right;
+}
+header .div > ul > li {
+  /* ================= MEGA MENU ================= */
+}
+header .div > ul > li.has-megha-menu {
+  position: relative;
+}
+header .div > ul > li.has-megha-menu .megha-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+header .div > ul > li.has-megha-menu .meghamenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  width: 300px;
+  background: #03070d;
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
+  /* Invisible hover bridge so menu does not close while moving mouse */
+}
+header .div > ul > li.has-megha-menu .meghamenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -18px;
+  width: 100%;
+  height: 18px;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col a {
+  display: block;
+  width: 100%;
+  padding: 13px 16px;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col a:hover {
+  color: #fff;
+  background: rgba(0, 108, 255, 0.22);
+  border-color: rgba(0, 140, 255, 0.55);
+  transform: translateX(5px);
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col:nth-child(1) {
+  transition-delay: 0.05s;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col:nth-child(2) {
+  transition-delay: 0.12s;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col:nth-child(3) {
+  transition-delay: 0.19s;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col:nth-child(4) {
+  transition-delay: 0.26s;
+}
+header .div > ul > li.has-megha-menu .meghamenu .megha-col:nth-child(5) {
+  transition-delay: 0.33s;
+}
+header .div > ul > li.has-megha-menu:hover .meghamenu, header .div > ul > li.has-megha-menu:focus-within .meghamenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+header .div > ul > li.has-megha-menu:hover .meghamenu .megha-col, header .div > ul > li.has-megha-menu:focus-within .meghamenu .megha-col {
+  opacity: 1;
+  transform: translateY(0);
+}
+header .div > ul > li.has-megha-menu:hover .megha-toggle svg, header .div > ul > li.has-megha-menu:focus-within .megha-toggle svg {
+  transform: rotate(45deg);
+}
+
+.contact-footer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, 75%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(0deg, rgb(20, 54, 109) 0%, rgba(255, 255, 255, 0) 75%, rgb(0, 0, 0) 100%);
+  color: #fff;
+  padding: 80px 40px 0;
+  position: relative;
+}
+
+.footer-container {
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-left {
+  padding-right: 40px;
+  width: 40%;
+}
+
+.footer-heading {
+  font-weight: 600;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.footer-subtitle {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
+  font-size: clamp(1rem, 0.5714rem + 0.6696vw, 1.375rem);
+}
+
+footer p, footer a, footer span {
+  font-size: clamp(0.875rem, 0.4464rem + 0.6696vw, 1rem);
+}
+
+.appointment-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+.appointment-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 60%;
+}
+
+.location-info .location-title {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.location-info .location-address {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 25px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+.contact-info a svg {
+  width: 18px;
+  height: auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(0.75rem, 0.5351rem + 0.3357vw, 0.938rem);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.contact-item:hover {
+  color: #ffffff;
+}
+.contact-item i {
+  font-size: clamp(0.75rem, 0.5351rem + 0.3357vw, 0.938rem);
+  width: 20px;
+}
+
+.map-container {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 50px 0;
+}
+
+.nav-column h3 {
+  font-size: clamp(0.875rem, 0.5668rem + 0.361vw, 1rem);
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.nav-column ul {
+  list-style: none;
+}
+.nav-column ul li {
+  margin-bottom: 12px;
+}
+.nav-column ul li a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.nav-column ul li a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.social-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-label {
+  font-size: clamp(0.75rem, 0.5351rem + 0.3357vw, 0.938rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: clamp(0.875rem, 0.7321rem + 0.2232vw, 1rem);
+  transition: all 0.3s ease;
+}
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.75rem, 0.6071rem + 0.2232vw, 0.875rem);
+}
+
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .footer-heading {
+    font-size: clamp(1.5rem, 0.5rem + 1.5625vw, 2.375rem);
+  }
+  .footer-left {
+    padding-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .contact-footer {
+    padding: 50px 20px 0;
+  }
+  .footer-nav {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .footer-heading {
+    font-size: clamp(1.5rem, 0.9286rem + 0.8929vw, 2rem);
+  }
+  .map-container {
+    height: 280px;
+  }
+}
+@media (max-width: 480px) {
+  .footer-heading {
+    font-size: clamp(1.375rem, 0.9464rem + 0.6696vw, 1.75rem);
+  }
+  .appointment-btn {
+    padding: 14px 30px;
+  }
+  .map-container {
+    height: 240px;
+  }
+}
+.contact-footer .hero-buttons {
+  justify-content: flex-start;
+}
+.contact-footer .menu-footer {
+  display: flex;
+}
+.contact-footer .menu-footer ul.footer-nav {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.contact-footer .menu-footer ul.footer-nav li a {
+  color: #fff;
+  position: relative;
+  /* UNDERLINE */
+}
+.contact-footer .menu-footer ul.footer-nav li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.contact-footer .menu-footer ul.footer-nav li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.contact-footer .menu-footer ul.footer-nav li a:not(:hover)::after {
+  transform-origin: right;
+}/*# sourceMappingURL=common.css.map */

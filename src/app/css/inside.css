@@ -1,0 +1,13 @@
+.inside-hero h1 {
+  text-align: center;
+}
+.inside-hero h1 span.sub {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 6px;
+  background: #14366D;
+  background: linear-gradient(90deg, rgb(20, 54, 109) 0%, rgb(179, 179, 179) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}/*# sourceMappingURL=inside.css.map */
