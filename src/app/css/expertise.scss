@@ -1,7 +1,7 @@
 
 .expertise-hero{
     .expertise-hero-image{
-        height: 652px;
+        height: clamp(420px, 33.95vw, 652px);
     }
 }
 
@@ -13,7 +13,7 @@
 }
 
 .expertise-hero {
-  padding: 130px 0 70px;
+  padding: clamp(70px, 7.3vw, 140px) 0 clamp(50px, 4.7vw, 90px);
   background:
     radial-gradient(circle at 50% 25%, rgba(0, 98, 190, 0.2), transparent 36%),
     #000;

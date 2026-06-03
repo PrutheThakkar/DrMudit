@@ -562,6 +562,163 @@ header .div > ul > li.has-megha-menu:hover .megha-toggle svg, header .div > ul >
   transform: rotate(45deg);
 }
 
+/* ================= MOBILE MENU ================= */
+.burger-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 1002;
+}
+.burger-btn span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  margin: 6px auto;
+  border-radius: 20px;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+.burger-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 991px) {
+  header {
+    padding: 16px 0;
+  }
+  header .logo {
+    width: 190px;
+  }
+  header .burger-btn {
+    display: block;
+  }
+  header .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 82%;
+    max-width: 360px;
+    height: 100vh;
+    background: #000;
+    padding: 110px 28px 40px;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.45s ease;
+    overflow-y: auto;
+  }
+  header .main-nav.open {
+    transform: translateX(0);
+  }
+  header .main-nav > ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  header .main-nav > ul > li {
+    width: 100%;
+  }
+  header .main-nav > ul > li > a,
+  header .main-nav > ul > li > button {
+    width: 100%;
+    font-size: 20px;
+    padding: 0;
+    justify-content: space-between;
+  }
+  header .main-nav .has-megha-menu:hover .meghamenu, header .main-nav .has-megha-menu:focus-within .meghamenu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 0;
+    padding: 0;
+  }
+  header .main-nav .has-megha-menu:hover .megha-toggle svg, header .main-nav .has-megha-menu:focus-within .megha-toggle svg {
+    transform: rotate(0deg);
+  }
+  header .main-nav .has-megha-menu .megha-toggle {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  header .main-nav .has-megha-menu .megha-toggle svg {
+    transition: transform 0.35s ease;
+  }
+  header .main-nav .has-megha-menu .meghamenu {
+    position: static;
+    width: 100%;
+    background: transparent;
+    border-radius: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    padding: 0;
+    transform: none;
+    transition: max-height 0.45s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  header .main-nav .has-megha-menu .meghamenu::before {
+    display: none;
+  }
+  header .main-nav .has-megha-menu .meghamenu .megha-columns {
+    gap: 8px;
+  }
+  header .main-nav .has-megha-menu .meghamenu .megha-col {
+    opacity: 1;
+    transform: none;
+  }
+  header .main-nav .has-megha-menu .meghamenu .megha-col a {
+    white-space: normal;
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+  header .main-nav .has-megha-menu.active .meghamenu {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    padding-top: 16px;
+  }
+  header .main-nav .has-megha-menu.active .megha-toggle svg {
+    transform: rotate(45deg);
+  }
+  body:has(.main-nav.open) {
+    overflow: hidden;
+  }
+}
+@media (max-width: 575px) {
+  header .logo {
+    width: 165px;
+  }
+  header .main-nav {
+    width: 88%;
+    padding: 100px 22px 35px;
+  }
+  header .main-nav > ul {
+    gap: 22px;
+  }
+  header .main-nav > ul > li > a,
+  header .main-nav > ul > li > button {
+    font-size: 18px;
+  }
+}
 .contact-footer {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, 75%, rgb(0, 0, 0) 100%);
   background: linear-gradient(0deg, rgb(20, 54, 109) 0%, rgba(255, 255, 255, 0) 75%, rgb(0, 0, 0) 100%);

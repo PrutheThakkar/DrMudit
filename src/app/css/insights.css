@@ -242,5 +242,5 @@
   }
 }
 .insights-hero-image {
-  height: 652px;
+  height: clamp(420px, 33.95vw, 652px);
 }/*# sourceMappingURL=insights.css.map */

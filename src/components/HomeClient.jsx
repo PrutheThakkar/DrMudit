@@ -906,74 +906,94 @@ export default function HomeClient() {
     // ===============================
     // PATIENT STORIES SWIPER
     // ===============================
-    if (document.querySelector(".patientSwiper")) {
-      const patientSection = document.querySelector(".Patient-section");
-      const patientSlides = document.querySelectorAll(
-        ".patientSwiper .swiper-slide"
-      );
+  
+if (document.querySelector(".patientSwiper")) {
+  const isMobilePatient = window.matchMedia("(max-width: 991px)").matches;
 
-      let lastPatientSlideIndex = 0;
+  if (isMobilePatient) {
+    patientSwiper = new Swiper(".patientSwiper", {
+      direction: "horizontal",
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      speed: 800,
+      grabCursor: true,
+      allowTouchMove: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      observer: true,
+      observeParents: true,
+    });
+  } else {
+    const patientSection = document.querySelector(".Patient-section");
+    const patientSlides = document.querySelectorAll(".patientSwiper .swiper-slide");
 
-      patientSwiper = new Swiper(".patientSwiper", {
-        direction: "vertical",
-        slidesPerView: 1,
-        spaceBetween: 10,
-        loop: false,
-        autoplay: false,
-        speed: 900,
-        allowTouchMove: false,
-        mousewheel: false,
-        observer: true,
-        observeParents: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+    let lastPatientSlideIndex = 0;
+
+    patientSwiper = new Swiper(".patientSwiper", {
+      direction: "vertical",
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: false,
+      autoplay: false,
+      speed: 900,
+      allowTouchMove: false,
+      mousewheel: false,
+      observer: true,
+      observeParents: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    if (patientSection && patientSlides.length > 1) {
+      const totalSlides = patientSlides.length;
+
+      ScrollTrigger.create({
+        trigger: patientSection,
+        start: "top top",
+        end: () => `+=${window.innerHeight * totalSlides}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1 / (totalSlides - 1),
+          duration: { min: 0.2, max: 0.6 },
+          delay: 0,
+          ease: "power1.inOut",
+        },
+        onUpdate(self) {
+          const slideIndex = Math.min(
+            totalSlides - 1,
+            Math.floor(self.progress * totalSlides)
+          );
+
+          if (slideIndex !== lastPatientSlideIndex) {
+            lastPatientSlideIndex = slideIndex;
+            patientSwiper.slideTo(slideIndex, 700);
+          }
+        },
+        onEnter() {
+          lastPatientSlideIndex = 0;
+          patientSwiper.slideTo(0, 0);
+        },
+        onEnterBack() {
+          lastPatientSlideIndex = totalSlides - 1;
+          patientSwiper.slideTo(totalSlides - 1, 0);
         },
       });
-
-      if (patientSection && patientSlides.length > 1) {
-        const totalSlides = patientSlides.length;
-
-        ScrollTrigger.create({
-          trigger: patientSection,
-          start: "top top",
-          end: () => `+=${window.innerHeight * totalSlides}`,
-          pin: true,
-          pinSpacing: true,
-          scrub: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          snap: {
-            snapTo: 1 / (totalSlides - 1),
-            duration: {
-              min: 0.2,
-              max: 0.6,
-            },
-            delay: 0,
-            ease: "power1.inOut",
-          },
-          onUpdate(self) {
-            const slideIndex = Math.min(
-              totalSlides - 1,
-              Math.floor(self.progress * totalSlides)
-            );
-
-            if (slideIndex !== lastPatientSlideIndex) {
-              lastPatientSlideIndex = slideIndex;
-              patientSwiper.slideTo(slideIndex, 700);
-            }
-          },
-          onEnter() {
-            lastPatientSlideIndex = 0;
-            patientSwiper.slideTo(0, 0);
-          },
-          onEnterBack() {
-            lastPatientSlideIndex = totalSlides - 1;
-            patientSwiper.slideTo(totalSlides - 1, 0);
-          },
-        });
-      }
     }
+  }
+}
 
     // ===============================
     // FAQ ACCORDION
